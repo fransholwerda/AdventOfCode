@@ -2,6 +2,7 @@
 #include <fstream>
 #include <map>
 #include <vector>
+#include <limits.h>
 
 std::vector<std::string> split(std::string str, std::string delim)
 {
