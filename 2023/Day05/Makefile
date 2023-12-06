@@ -3,7 +3,7 @@ SRC		= main.cpp
 OBJ		= $(SRC:.cpp=.o)
 INCLUDE	= 
 LINKS	= 
-FLAGS	=
+FLAGS	= -Wall -Werror -Wextra
 CC		= c++
 
 all: $(NAME)
