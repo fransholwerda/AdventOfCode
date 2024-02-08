@@ -48,7 +48,7 @@ std::string vert_string(std::vector<std::string> vec, size_t col)
 int main(void)
 {
 	std::ifstream infile;
-	infile.open("input.txt");
+	infile.open("test_input.txt");
 	if (infile.fail())
 	{
 		std::cout << "Could not open file." << std::endl;
@@ -83,10 +83,12 @@ int main(void)
 	}
 
 	long long answer_part_one = 0;
+	std::cout << "Number of patterns: " << patterns.size() << std::endl;
 	for (std::vector<std::string> pattern : patterns)
 	{
 		i = 1;
 		bool mirror = false;
+		std::cout << "Pattern row" << std::endl;
 		while (i < pattern.size() - 2)
 		{
 			if (pattern[i] == pattern[i+1])
@@ -98,6 +100,7 @@ int main(void)
 				{
 					if (pattern[i+left] != pattern[i+right])
 					{
+						std::cout << "Not mirror" << std::endl;
 						mirror = false;
 						break;
 					}
@@ -105,7 +108,10 @@ int main(void)
 					right++;
 				}
 				if (mirror)
+				{
+					std::cout << "Found mirror at row " << i+1 << ", score: " << (i+1)*100 << std::endl;
 					answer_part_one += (i+1) * 100;
+				}
 			}
 			if (mirror)
 				break;
@@ -114,6 +120,7 @@ int main(void)
 		if (mirror)
 			continue;
 		i = 1;
+		std::cout << "Pattern col" << std::endl;
 		while (i < pattern[0].size() - 2)
 		{
 			if (vert_string(pattern, i) == vert_string(pattern, i+1))
@@ -125,6 +132,7 @@ int main(void)
 				{
 					if (vert_string(pattern, i+left) != vert_string(pattern, i+right))
 					{
+						std::cout << "Not mirror: " << vert_string(pattern, i+left) << " <> " << vert_string(pattern, i+right) << std::endl;
 						mirror = false;
 						break;
 					}
@@ -132,7 +140,10 @@ int main(void)
 					right++;
 				}
 				if (mirror)
+				{
+					std::cout << "Found mirror at col " << i+1 << ", score: " << (i+1) << std::endl;
 					answer_part_one += (i+1);
+				}
 			}
 			if (mirror)
 				break;
