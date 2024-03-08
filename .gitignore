@@ -1,3 +1,5 @@
 input.txt
 test_input.txt
 .vscode
+*.o
+AdventOfCode
