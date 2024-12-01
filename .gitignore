@@ -4,3 +4,4 @@ test_input.txt
 *.o
 AdventOfCode
 2018*
+*.exe
